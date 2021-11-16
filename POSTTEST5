@@ -1,0 +1,97 @@
+import datetime
+
+artikel = {
+  "judul": "\t\t   selamat datang"
+}
+print(artikel.get("judul"))
+
+makanan = {
+    "bakso": 10000,
+    "Coto": 15000,
+    "mie ayam":13000
+}
+
+minuman = {
+    "mineral kemasan":2000,
+    "Es Teh":3000,
+    "Es Jeruk":5000,
+}
+
+def print_menu():
+    print("""
+    ===========================================
+                   waroeng ananta
+                     List Menu 
+    ===========================================    
+a.  bakso                    Harga : Rp. 10000
+b.  Coto                     Harga : Rp. 15000
+c.  mie ayam                 Harga : Rp. 13000
+d.  mineral kemasan          Harga : Rp. 2000
+e.  Es Teh                   Harga : Rp. 3000
+f.  Es Jeruk                 Harga : Rp. 5000
+    ===========================================
+    """)
+    
+pilihan="y"
+while pilihan=="y":
+    print_menu()
+    pesan=str(input("masukkan list abjad menu ="))
+    jumlahpesan=int(input("masukkan jumlah pesanan ="))
+    if pesan == "a":
+        print("Anda memesan bakso, Sebanyak", jumlahpesan, "Porsi")
+        listnama= "bakso"
+        harga= makanan["bakso"]
+        diskon = 5 if jumlahpesan >= 2 else 0
+        totalharga = (harga*jumlahpesan)
+    elif pesan == "b":
+        print("Anda memesan coto, Sebanyak", jumlahpesan, "Porsi")
+        listnama= "coto"
+        harga= makanan["coto"]
+        diskon = 5 if jumlahpesan >= 2 else 0
+        totalharga = (harga*jumlahpesan)
+    elif pesan == "c":
+        print("Anda memesan mie ayam, Sebanyak", jumlahpesan, "Porsi")
+        listnama= "coto ayam"
+        harga= makanan["coto ayam"]
+        diskon = 5 if jumlahpesan >= 2 else 0
+        totalharga = (harga*jumlahpesan)
+    elif pesan == "d":
+        print("Anda memesan air putih, Sebanyak", jumlahpesan, "Porsi")
+        listnama= "mineral kemasan"
+        harga= minuman["mineral kemasan"]
+        diskon = 10 if jumlahpesan >= 3 else 0
+        totalharga = (harga*jumlahpesan)
+    elif pesan == "e":
+        print("Anda memesan Es Teh, Sebanyak", jumlahpesan, "Porsi")
+        listnama= "Es Teh"
+        harga= minuman["Es Teh"]
+        diskon = 10 if jumlahpesan >= 3 else 0
+        totalharga = (harga*jumlahpesan)
+    elif pesan == "f":
+        print("Anda memesan Es Jeruk, Sebanyak", jumlahpesan, "Porsi")
+        listnama= "Es Jeruk"
+        harga= minuman["Es Jeruk"]
+        diskon = 10 if jumlahpesan >= 3 else 0
+        totalharga = (harga*jumlahpesan)
+    else:
+        listnama = "-"
+        harga = "-"
+        diskon = "-"
+        totalharga = "-"
+        pilihan=input("menu tidak tersedia, silahkan masukkan abjad menu yang tersedia silahkan ulangi kembali y/t =")
+    metodepembayaran = input("Apa anda ingin membayar dengan E-money? (y/n)")
+    diskonpembayaran = 5 if metodepembayaran == "y" else 0
+    diskonhari = 10 if datetime.datetime.today().weekday() < 5 else 5
+    totaldiskon = diskon + diskonpembayaran + diskonpembayaran
+    totalbayar = totalharga - (totaldiskon * totalharga / 100)
+    print("--------------------------")
+    print("waroeng ananta")
+    print("--------------------------")
+    print("Menu :",listnama)
+    print("Jumlah Pesan :", jumlahpesan)
+    print("Harga :", harga)
+    print("Diskon :", totaldiskon,"%")
+    print("--------------------------")
+    print("Jumlah Bayar :", totalbayar)
+    print("--------------------------")
+    pilihan=input("apakah anda ingin order kembali y/t =")
