@@ -6,4 +6,4 @@ Prodi : Informatika
 
 Kelas : A'21
 
-POSTTETS : 3
+POSTTETS : 5
